@@ -25,7 +25,7 @@ function getComputerChoice() {
 
 function getHumanChoice() {
     let humanChoice = prompt("Let's play sccissors paper rock! Pick one.");
-    humanChoice.toLowerCase();
+    humanChoice = humanChoice.toLowerCase();
     return humanChoice;
 }
 
@@ -68,6 +68,7 @@ function playGame() {
         console.log("Its a tie!");
     }
 
+    return `Final score: You ${humanScore} - ${computerScore} Computer`;
 
 }
 
