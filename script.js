@@ -1,15 +1,3 @@
-// let allChoices = ["rock", "paper", "scissors"];
-
-// function getRandom(max) {
-//     return Math.floor(Math.random() * max);
-// }
-
-// function getComputerChoice() {
-//     return allChoices[getRandom(allChoices.length)];
-// }
-
-// console.log(getComputerChoice())
-
 let humanChoice;
 let computerChoice;
 
@@ -52,14 +40,15 @@ map1.set("rock", "scissors");
 
 function playRound(humanChoice, computerChoice) {
     if (computerChoice === humanChoice) {
-        return "Draw";
+        alert("Draw");
     } else if (map1.get(humanChoice) === computerChoice) {
         humanScore++;
-        return "You won!";
+        alert("You won!");
     } else {
         computerScore++;
-        return "You lost";
+        alert("You lost");
     }
+    return;
 }
 
 function playGame() {
@@ -68,8 +57,7 @@ function playGame() {
     for (let round = 0; round < num; round++) {
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection)
-        // console.log(playRound(humanSelection, computerSelection));
+        playRound(humanSelection, computerSelection);
     }
 
     if (humanScore > computerScore) {
@@ -83,8 +71,8 @@ function playGame() {
 
 }
 
-playGame();
-
+// alert(playRound(getHumanChoice(), getComputerChoice()));
+alert(playGame());
 
 
 
