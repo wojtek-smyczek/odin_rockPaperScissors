@@ -1,3 +1,30 @@
+const btnAll = document.querySelector(".container");
+btnAll.style.maxHeight = "200px";
+btnAll.style.minHeight = "50px";
+btnAll.style.padding = "10px";
+btnAll.style.display = "flex";
+btnAll.style.justifyContent = "space-around";
+
+
+const btnRock = document.createElement("button");
+btnRock.textContent = "Rock";
+btnAll.appendChild(btnRock);
+
+const btnSciccors = document.createElement("button");
+btnSciccors.textContent = "Scissors";
+btnAll.appendChild(btnSciccors);
+
+const btnPaper = document.createElement("button");
+btnPaper.textContent = "Paper";
+btnAll.appendChild(btnPaper);
+
+btnAll.addEventListener("click", playRound);
+
+
+
+
+// --------------------------------------------------
+
 let humanChoice;
 let computerChoice;
 
@@ -11,24 +38,6 @@ function getRandom(max) {
     return Math.floor(Math.random() * max);
 }
 
-function getComputerChoice() {
-    let number = getRandom(3);
-
-    if (number === 1) {
-        return "rock";
-    } else if (number === 2) {
-        return "paper";
-    } else {
-        return "scissors";
-    }
-}
-
-function getHumanChoice() {
-    let humanChoice = prompt("Let's play sccissors paper rock! Pick one.");
-    humanChoice = humanChoice.toLowerCase();
-    return humanChoice;
-}
-
 let humanScore = 0;
 let computerScore = 0;
 
@@ -38,7 +47,20 @@ map1.set("paper", "rock");
 map1.set("scissors", "paper");
 map1.set("rock", "scissors");
 
-function playRound(humanChoice, computerChoice) {
+function playRound(e) {
+    let number = getRandom(3);
+    let computerChoice;
+
+    if (number === 0) {
+        computerChoice = "rock";
+    } else if (number === 1) {
+        computerChoice = "paper";
+    } else {
+        computerChoice = "scissors";
+
+    }
+    let humanChoice = e.target.textContent.toLowerCase();
+
     if (computerChoice === humanChoice) {
         alert("Draw");
     } else if (map1.get(humanChoice) === computerChoice) {
@@ -71,10 +93,6 @@ function playGame() {
     return `Final score: You ${humanScore} - ${computerScore} Computer`;
 
 }
-
-// alert(playRound(getHumanChoice(), getComputerChoice()));
-alert(playGame());
-
 
 
 
